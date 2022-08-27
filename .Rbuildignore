@@ -11,3 +11,6 @@ $run_dev.*
 ^codecov\.yml$
 ^app\.R$
 ^rsconnect$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
