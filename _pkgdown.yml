@@ -10,6 +10,9 @@ navbar:
     left:  [intro, reference, articles, news]
     right: [search, github]
 home:
+  title: Itinerary
+  description: >
+    An R Shiny app that displays data related to an itinerary.
   sidebar:
     structure: [custom, links, dev]
     components:

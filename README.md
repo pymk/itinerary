@@ -1,12 +1,10 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# Itinerary
-
 <!-- badges: start -->
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/pymk/itinerary/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pymk/itinerary/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 This is an R Shiny app that displays data related to an itinerary. The
