@@ -1,4 +1,20 @@
 url: ~
 template:
   bootstrap: 5
-
+footer:
+  structure: 
+    left: developed_by
+    right: built_with
+navbar:
+  structure:
+    left:  [intro, reference, articles, news]
+    right: [search, github]
+home:
+  sidebar:
+    structure: [custom, links, dev]
+    components:
+      custom:
+        title: Itinerary
+        text: An R Shiny app that displays data related to an itinerary.
+development:
+  mode: auto
