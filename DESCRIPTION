@@ -1,0 +1,17 @@
+Package: itinerary
+Title: Itinerary
+Version: 0.0.0.9000
+Authors@R: 
+    person(
+    given = "pymk",
+    role = c("aut", "cre"),
+    email = "hello@pymk.dev")
+Description: An R Shiny app that displays data related to an itinerary.
+License: MIT + file LICENSE
+Imports: 
+    config (>= 0.3.1),
+    golem (>= 0.3.3),
+    shiny (>= 1.7.2)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
