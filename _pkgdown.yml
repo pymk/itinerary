@@ -10,7 +10,7 @@ navbar:
     left:  [intro, reference, articles, news]
     right: [search, github]
 home:
-  title: {itinerary}
+  title: An R Shiny App for Itinerary Tabulation
   description: >
     An R Shiny app that displays data related to an itinerary.
   sidebar:
