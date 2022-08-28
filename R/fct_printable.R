@@ -17,7 +17,7 @@ printable <- function(x) {
     highlight = TRUE,
     sortable = TRUE,
     showSortable = TRUE,
-    filterable = TRUE,
+    filterable = FALSE,
     searchable = FALSE,
     showPageSizeOptions = FALSE,
     showPageInfo = FALSE,

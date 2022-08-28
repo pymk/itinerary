@@ -13,7 +13,7 @@ mod_upload_dataset_ui <- function(id) {
   shiny::tagList(
     shiny::fileInput(
       inputId = ns("upload_file"),
-      label = "Choose CSV File",
+      label = "Upload Data",
       multiple = FALSE,
       accept = c("text/csv", "text/comma-separated-values,text/plain", ".csv")
     )

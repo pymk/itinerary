@@ -1,5 +1,6 @@
 # itinerary 0.0.1.0
 
+* Added functions to support template download.
 * Added functions to support dataset upload and display.
 
 # itinerary 0.0.0.9000

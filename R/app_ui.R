@@ -40,8 +40,13 @@ app_ui <- function(request) {
               title = "Upload the Itinerary Dataset",
               width = 12,
               shiny::fluidRow(
-                shiny::column(width = 4, mod_upload_dataset_ui("upload_dataset_1")),
-                shiny::column(width = 8, mod_display_dataset_ui("display_dataset_1"))
+                shiny::column(
+                  width = 3,
+                  mod_template_message_ui("template_message_1"),
+                  shiny::br(),
+                  mod_upload_dataset_ui("upload_dataset_1")
+                ),
+                shiny::column(width = 9, mod_display_dataset_ui("display_dataset_1"))
               )
             )
           )

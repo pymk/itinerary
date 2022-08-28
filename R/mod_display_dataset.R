@@ -10,7 +10,7 @@
 mod_display_dataset_ui <- function(id) {
   ns <- shiny::NS(id)
   shiny::tagList(
-    shiny::uiOutput(ns("message")),
+    shiny::uiOutput(ns("preview_title")),
     reactable::reactableOutput(ns("table"))
   )
 }
@@ -22,11 +22,10 @@ mod_display_dataset_server <- function(id) {
   shiny::moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
-    output$message <- shiny::renderUI({
+    output$preview_title <- shiny::renderUI({
       if (is.null(file_oi())) {
         return(NULL)
       }
-
       shiny::strong("Preview")
     })
 

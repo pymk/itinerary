@@ -27,3 +27,5 @@ Config/testthat/edition: 3
 VignetteBuilder: knitr
 URL: https://github.com/pymk/itinerary
 BugReports: https://github.com/pymk/itinerary/issues
+Depends: 
+    R (>= 2.10)
