@@ -2,6 +2,7 @@
 
 * Added functions to support template download.
 * Added functions to support dataset upload and display.
+* Added functions to validate uploaded dataset.
 
 # itinerary 0.0.0.9000
 

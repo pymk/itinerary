@@ -1,4 +1,4 @@
-good_data <- extrip
+good_data <- itinerary::extrip
 wrong_col_name <- good_data
 missing_values <- good_data
 wrong_date_fmt <- good_data

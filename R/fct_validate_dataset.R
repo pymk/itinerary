@@ -8,7 +8,7 @@
 #' @noRd
 #' @importFrom purrr map_df map_lgl
 validate_dataset <- function(x) {
-  req_columns <- names(extrip)
+  req_columns <- names(itinerary::extrip)
 
   is_date <- function(date, date_format = "%Y-%m-%d") {
     tryCatch(!is.na(as.Date(date, date_format)), error = function(err) {

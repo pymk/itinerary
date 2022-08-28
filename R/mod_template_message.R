@@ -60,7 +60,7 @@ mod_template_message_server <- function(id) {
         "itinerary_template.csv"
       },
       content = function(file) {
-        utils::write.csv(extrip, file, row.names = FALSE)
+        utils::write.csv(itinerary::extrip, file, row.names = FALSE)
       }
     )
   })
