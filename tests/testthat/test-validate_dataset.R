@@ -15,21 +15,26 @@ wrong_num_fmt$duration_days <- as.character(wrong_num_fmt$duration_days)
 wrong_num_fmt["duration_days"][wrong_num_fmt["duration_days"] == 3] <- "wrong"
 
 testthat::test_that("Correct dataset passes", {
+  testthat::skip_on_ci()
   testthat::expect_equal(validate_dataset(good_data), TRUE)
 })
 
 testthat::test_that("Wrong column names fails", {
+  testthat::skip_on_ci()
   testthat::expect_match(validate_dataset(wrong_col_name), "required columns are not present")
 })
 
 testthat::test_that("Missing values fails", {
+  testthat::skip_on_ci()
   testthat::expect_match(validate_dataset(missing_values), "Rows cannot be left empty")
 })
 
 testthat::test_that("Wrong date format fails", {
+  testthat::skip_on_ci()
   testthat::expect_match(validate_dataset(wrong_date_fmt), "should be in YYYY-MM-DD format")
 })
 
 testthat::test_that("Wrong numeric fields fails", {
+  testthat::skip_on_ci()
   testthat::expect_match(validate_dataset(wrong_num_fmt), "values should be numbers")
 })
