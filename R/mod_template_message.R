@@ -13,6 +13,7 @@ mod_template_message_ui <- function(id) {
   shiny::tagList(
     shiny::strong("Download Template"),
     shiny::br(),
+    shiny::uiOutput(ns("data_issue")),
     shiny::uiOutput(ns("message"))
   )
 }
@@ -23,6 +24,25 @@ mod_template_message_ui <- function(id) {
 mod_template_message_server <- function(id) {
   shiny::moduleServer(id, function(input, output, session) {
     ns <- session$ns
+    output$data_issue <- shiny::renderUI({
+      if (is.null(file_oi())) {
+        return(NULL)
+      } else if (validate_dataset(dataset_oi()) != TRUE) {
+        shiny::div(
+          shiny::span(
+            shiny::strong("The dataset you uploaded has issues."),
+            shiny::br(),
+            shiny::strong("Please download the CSV template."),
+            shiny::br(),
+            style = "color:#ec4e50"
+          ),
+          style = "text-align:left; color:lightgray; border:1px dashed; padding:1.1em; display:inline-block;"
+        )
+      } else {
+        return(NULL)
+      }
+    })
+
     output$message <- shiny::renderUI({
       shiny::div(
         shiny::span(
