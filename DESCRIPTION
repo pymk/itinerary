@@ -9,12 +9,15 @@ Authors@R:
 Description: An R Shiny app that displays data related to an itinerary.
 License: MIT + file LICENSE
 Imports: 
+    bs4Dash,
     config (>= 0.3.1),
     golem (>= 0.3.3),
+    magrittr,
+    reactable,
     shiny (>= 1.7.2)
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 Suggests: 
     covr,
     knitr,

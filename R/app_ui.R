@@ -5,12 +5,48 @@
 #' @import shiny
 #' @noRd
 app_ui <- function(request) {
-  tagList(
+  shiny::tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
-    # Your application UI logic
-    fluidPage(
-      h1("itinerary")
+    shiny::tags$style("@import url(https://use.fontawesome.com/releases/v5.7.2/css/all.css);"),
+    bs4Dash::dashboardPage(
+      title = "DashboardPage",
+      dark = NULL,
+      header = bs4Dash::dashboardHeader(
+        title = bs4Dash::bs4DashBrand(
+          title = "{itinerary}",
+          color = "secondary"
+        )
+      ),
+      sidebar = bs4Dash::dashboardSidebar(
+        elevation = 0,
+        collapsed = FALSE,
+        minified = FALSE,
+        expandOnHover = FALSE,
+        bs4Dash::sidebarMenu(
+          bs4Dash::menuItem(
+            text = "Dashboard",
+            tabName = "dashboard",
+            icon = shiny::icon("dashboard"),
+            selected = TRUE
+          )
+        )
+      ),
+      body = bs4Dash::dashboardBody(
+        bs4Dash::tabItems(
+          bs4Dash::tabItem(
+            tabName = "dashboard",
+            bs4Dash::box(
+              title = "Upload the Itinerary Dataset",
+              width = 12,
+              shiny::fluidRow(
+                shiny::column(width = 4, mod_upload_dataset_ui("upload_dataset_1")),
+                shiny::column(width = 8, mod_display_dataset_ui("display_dataset_1"))
+              )
+            )
+          )
+        )
+      )
     )
   )
 }
@@ -24,14 +60,14 @@ app_ui <- function(request) {
 #' @importFrom golem add_resource_path activate_js favicon bundle_resources
 #' @noRd
 golem_add_external_resources <- function() {
-  add_resource_path(
-    "www",
-    app_sys("app/www")
+  golem::add_resource_path(
+    prefix = "www",
+    directoryPath = app_sys("app/www")
   )
 
-  tags$head(
-    favicon(ext = "png"),
-    bundle_resources(
+  shiny::tags$head(
+    golem::favicon(ext = "png"),
+    golem::bundle_resources(
       path = app_sys("app/www"),
       app_title = "itinerary"
     )

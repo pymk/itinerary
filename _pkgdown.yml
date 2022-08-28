@@ -10,14 +10,16 @@ navbar:
     left:  [intro, reference, articles, news]
     right: [search, github]
 home:
-  title: Itinerary
+  title: {itinerary}
   description: >
     An R Shiny app that displays data related to an itinerary.
   sidebar:
-    structure: [custom, links, dev]
+    structure: [custom, dev]
     components:
       custom:
         title: Itinerary
-        text: An R Shiny app that displays data related to an itinerary.
+        text: >
+          An R Shiny app that displays data related to an itinerary.
+          https://github.com/pymk/itinerary/
 development:
   mode: auto
