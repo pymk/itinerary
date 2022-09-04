@@ -9,10 +9,10 @@ names(wrong_col_name)[names(wrong_col_name) == "group"] <- "bad_name"
 missing_values["country"][missing_values["country"] == "Norway"] <- ""
 
 wrong_date_fmt$arrival <- as.character(wrong_date_fmt$arrival)
-wrong_date_fmt["arrival"][wrong_date_fmt["arrival"] == "2022-08-10"] <- "10-AUG-2022"
+wrong_date_fmt["arrival"][wrong_date_fmt["arrival"] == "2022-12-12"] <- "10-AUG-2022"
 
 wrong_num_fmt$duration_days <- as.character(wrong_num_fmt$duration_days)
-wrong_num_fmt["duration_days"][wrong_num_fmt["duration_days"] == 3] <- "wrong"
+wrong_num_fmt["duration_days"][wrong_num_fmt["duration_days"] == 10] <- "wrong"
 
 testthat::test_that("Correct dataset passes", {
   testthat::skip_on_ci()

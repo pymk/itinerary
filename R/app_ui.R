@@ -20,7 +20,7 @@ app_ui <- function(request) {
       ),
       sidebar = bs4Dash::dashboardSidebar(
         elevation = 0,
-        collapsed = FALSE,
+        collapsed = TRUE,
         minified = FALSE,
         expandOnHover = FALSE,
         bs4Dash::sidebarMenu(
@@ -48,7 +48,8 @@ app_ui <- function(request) {
                 ),
                 shiny::column(width = 9, mod_display_dataset_ui("display_dataset_1"))
               )
-            )
+            ),
+            mod_generate_map_ui("generate_map_1")
           )
         )
       )

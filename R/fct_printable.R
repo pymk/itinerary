@@ -7,7 +7,14 @@
 #'
 #' @noRd
 #' @importFrom reactable reactable colDef
-printable <- function(x) {
+#' @importFrom utils head
+printable <- function(x, n = 10) {
+  if (is.numeric(n)) {
+    x <- head(x, n = n)
+  } else if (n == "all") {
+    x <- x
+  }
+  
   reactable::reactable(
     data = x,
     defaultColDef = reactable::colDef(

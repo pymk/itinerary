@@ -32,6 +32,8 @@ mod_template_message_server <- function(id) {
           shiny::span(
             shiny::strong("The dataset you uploaded has issues."),
             shiny::br(),
+            shiny::textOutput(ns("error_message")),
+            shiny::br(),
             shiny::strong("Please download the CSV template."),
             shiny::br(),
             style = "color:#ec4e50"
@@ -40,6 +42,12 @@ mod_template_message_server <- function(id) {
         )
       } else {
         return(NULL)
+      }
+    })
+    
+    output$error_message <- shiny::renderText({
+      if (validate_dataset(dataset_oi()) != TRUE) {
+        validate_dataset(dataset_oi())
       }
     })
 

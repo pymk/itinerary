@@ -8,6 +8,7 @@
 #'
 #' @importFrom shiny NS tagList
 #' @importFrom utils read.csv
+#' @importFrom dplyr mutate case_when
 mod_upload_dataset_ui <- function(id) {
   ns <- NS(id)
   shiny::tagList(
@@ -26,14 +27,33 @@ mod_upload_dataset_ui <- function(id) {
 mod_upload_dataset_server <- function(id) {
   shiny::moduleServer(id, function(input, output, session) {
     ns <- session$ns
-
+    
     file_oi <<- shiny::reactive({
       input$upload_file
     })
 
     dataset_oi <<- shiny::reactive({
-      utils::read.csv(file_oi()$datapath, header = TRUE)
+      if (!is.null(file_oi())) {
+        utils::read.csv(file_oi()$datapath, header = TRUE)
+      }
     })
+    
+    dataset_mod <<- shiny::reactive({
+      dataset_oi() |>
+        dplyr::mutate(
+          leave = as.Date(arrival) + as.numeric(duration_days),
+          country = dplyr::case_when(
+            country %in% c(
+              "USA", "U.S.A.", "UniteD States"
+            ) ~ "United States of America",
+            country %in% c(
+              "UK", "U.K.", "Scotland", "England"
+            ) ~ "United Kingdom",
+            TRUE ~ country
+          )
+        )
+    })
+
   })
 }
 

@@ -7,9 +7,26 @@
 #'
 #' @noRd
 #' @importFrom purrr map_df map_lgl
+#' @importFrom dplyr select
 validate_dataset <- function(x) {
+  
   req_columns <- names(itinerary::extrip)
+  
+  world_map <- maps::world.cities |>
+    dplyr::select(country = country.etc, city = name)
+  
+  other_names <- c(
+    "U.S.A.",
+    "U.K.",
+    "Scotland",
+    "England",
+    "United States",
+    "United States of America",
+    "United Kingdom"
+  )
 
+  check_countries <- x$country %in% c(world_map$country, other_names)
+  
   is_date <- function(date, date_format = "%Y-%m-%d") {
     tryCatch(!is.na(as.Date(date, date_format)), error = function(err) {
       FALSE
@@ -36,14 +53,20 @@ validate_dataset <- function(x) {
     }
   }
 
-  if (!all(names(x) %in% req_columns)) {
-    return("Error: required columns are not present. Please use the template")
+  if (!all(req_columns %in% names(x))) {
+    return("Error: required columns are not present or have typos.")
   } else if (!all(purrr::map_lgl(x$duration_days, ~ is_integer_number(.x)))) {
     return("Error: `duration_days` values should be numbers.")
   } else if (!all(is_date(x$arrival))) {
     return("Error: `arrival` values should be in YYYY-MM-DD format.")
   } else if (is_empty(x)) {
     return("Error: Rows cannot be left empty.")
+  } else if (!all(check_countries)) {
+    countries_not_found <- x$country[which(check_countries == FALSE)]
+    return(paste0(
+      "Error: Possible typo in country names: ",
+      paste0(countries_not_found, collapse = ", ")
+    ))
   } else {
     return(TRUE)
   }

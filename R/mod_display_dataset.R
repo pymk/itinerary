@@ -7,11 +7,13 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
+#' @importFrom reactable renderReactable reactableOutput
+#' @importFrom shinycssloaders withSpinner
 mod_display_dataset_ui <- function(id) {
   ns <- shiny::NS(id)
   shiny::tagList(
     shiny::uiOutput(ns("preview_title")),
-    reactable::reactableOutput(ns("table"))
+    shinycssloaders::withSpinner(reactable::reactableOutput(ns("table")))
   )
 }
 
