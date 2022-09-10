@@ -39,7 +39,7 @@ validate_dataset <- function(x) {
         FALSE
       })
     } else {
-      return(FALSE)
+      FALSE
     }
   }
 
@@ -47,9 +47,9 @@ validate_dataset <- function(x) {
     x_df <- purrr::map_df(x, ~ is.na(.x) | nchar(.x) == 0)
     x_ls <- purrr::map_lgl(x_df, any)
     if ("TRUE" %in% x_ls) {
-      return(TRUE)
+      TRUE
     } else {
-      return(FALSE)
+      FALSE
     }
   }
 
@@ -68,6 +68,6 @@ validate_dataset <- function(x) {
       paste0(countries_not_found, collapse = ", ")
     ))
   } else {
-    return(TRUE)
+    TRUE
   }
 }
